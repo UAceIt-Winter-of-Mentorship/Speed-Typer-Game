@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nosifer&family=Oswald:wght@500&family=Poppins&family=Ubuntu&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Speed Typer Game</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="difficulty">
+        <p>Difficulty</p>
+        <select>
+          <option value="easy">Easy</option>
+          <option value="medium" selected>Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn"></button>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="game-box">
+        <div class="game-head">
+          <h1>Speed Typer</h1>
+        </div>
+        <div class="game-body">
+          <div class="time-score">
+            <div class="time-left">Time Left: 10 seconds</div>
+            <div class="score">Score: 0</div>
+          </div>
+          <p>Type the following word</p>
+          <input
+            type="text"
+            class="word-input"
+            placeholder="Type the word here..."
+          />
+          <button class="btn">Start Game</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
