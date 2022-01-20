@@ -21,7 +21,7 @@
     <title>Speed Typer Game</title>
   </head>
   <body>
-    <nav class="navbar">
+    <nav class="navbar show">
       <div class="nav-content">
         <div class="difficulty">
           <p>Difficulty</p>
@@ -33,24 +33,27 @@
         </div>
 
         <div class="nav-buttons">
-          <button class="nav-btn">
+          <button class="btn nav-btn">
             <i class="fas fa-list-ol"></i>
           </button>
-          <button class="nav-btn">
+          <button class="btn nav-btn">
             <i class="fas fa-info"></i>
           </button>
         </div>
       </div>
+      <div class="navbar-toggle">
+        <i class="fas fa-chevron-up"></i>
+      </div>
     </nav>
 
     <div class="container">
-      <div class="game-box">
+      <div class="game-card">
         <div class="game-head">
           <h1>Speed Typer</h1>
         </div>
         <div class="game-body">
           <div class="time-score">
-            <div class="time-left">Time Left: 10 seconds</div>
+            <div class="time-left">Time Left: 10s</div>
             <div class="score">Score: 0</div>
           </div>
           <p>Type the following word</p>
@@ -59,16 +62,16 @@
             class="word-input"
             placeholder="Type the word here..."
           />
-          <button class="btn">Start Game</button>
+          <button class="btn game-btn">Start Game</button>
         </div>
       </div>
     </div>
 
-    <div class="rules-box">
-      <div class="rules-content">
+    <div class="rules-overlay">
+      <div class="rules-card">
         <div class="rules-head">
           <h2>Rules</h2>
-          <button class="close-btn">
+          <button class="close-btn" id="close-rules">
             <i class="fas fa-times"></i>
           </button>
         </div>
@@ -84,6 +87,31 @@
           <p>Hard: 1 second</p>
           <p>Also the range of diversity of words increases with difficulty</p>
           <p>Aim is to score as high as possible. GOOD LUCK!!!</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="scores-overlay">
+      <div class="scores-card">
+        <div class="scores-head">
+          <h2>High Scores</h2>
+          <button class="close-btn" id="close-scores">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="scores-body">
+          <div class="score-item score-item-head">Difficulty</div>
+          <div class="score-item score-item-head">Score</div>
+          <div class="score-item score-item-head">Date</div>
+          <div class="score-item">Easy</div>
+          <div class="score-item">0</div>
+          <div class="score-item">-</div>
+          <div class="score-item">Medium</div>
+          <div class="score-item">0</div>
+          <div class="score-item">-</div>
+          <div class="score-item">Hard</div>
+          <div class="score-item">0</div>
+          <div class="score-item">-</div>
         </div>
       </div>
     </div>

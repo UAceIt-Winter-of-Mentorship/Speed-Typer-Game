@@ -8,6 +8,44 @@ body {
   font-family: 'Poppins';
 }
 
+.btn {
+  display: block;
+  border: 0;
+  border-radius: 10px;
+  padding: 0.5rem 0.7rem;
+  font-size: 1.3rem;
+  margin: 0.7rem auto;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+input,
+select {
+  display: block;
+  border-radius: 5px;
+  padding: 0.75rem;
+  border: 0;
+  margin: 0.5rem auto;
+  font-size: 1.2rem;
+}
+
+input:focus,
+select:focus {
+  outline: 0;
+}
+
+select:hover {
+  cursor: pointer;
+}
+
 .navbar {
   position: absolute;
   top: 0;
@@ -15,8 +53,28 @@ body {
   margin: auto;
   left: 0;
   right: 0;
-  padding: 0.7rem 0;
+  padding: 0.2rem 0;
   color: #fff;
+  height: 10vh;
+  transform: translateY(-100%);
+  transition: all 0.2s ease-in-out;
+}
+
+.navbar.show {
+  transform: translateY(0);
+}
+
+.navbar-toggle {
+  position: absolute;
+  top: 10vh;
+  left: 47vw;
+  width: 6vw;
+  border-radius: 0 0 10px 10px;
+  cursor: pointer;
+  height: 2rem;
+  padding: 5px;
+  background-color: #1f2b38;
+  text-align: center;
 }
 
 .nav-content {
@@ -35,41 +93,22 @@ body {
 
 .difficulty p {
   margin-right: 0.6rem;
+  font-size: 1.3rem;
 }
 
 .difficulty select {
   background-color: #a7c5e3;
   width: 200px;
-  padding: 0.4rem 0.8rem;
-  border-radius: 7px;
-}
-
-.difficulty select:hover {
-  cursor: pointer;
-}
-
-.difficulty select:focus {
-  outline: 0;
+  appearance: none;
+  padding: 0.3rem 1rem;
+  font-size: 1rem;
 }
 
 .nav-btn {
-  padding: 0.5rem;
   width: 2.5rem;
   height: 2.5rem;
   margin-left: 0.5rem;
-  font-size: 1.3rem;
-  border-radius: 5px;
-  border: 0;
-  transition: all 0.2s ease-in-out;
-}
-
-.nav-btn:hover {
-  cursor: pointer;
-  opacity: 0.9;
-}
-
-.nav-btn:active {
-  transform: scale(0.95);
+  display: inline;
 }
 
 .container {
@@ -81,7 +120,7 @@ body {
   background-color: #2c3e50;
 }
 
-.game-box {
+.game-card {
   padding: 0.6rem;
   box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.5);
   width: 35vw;
@@ -105,8 +144,8 @@ body {
 .time-score {
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  margin: 0.5rem 0;
+  width: 90%;
+  margin: 0.5rem auto;
 }
 
 .game-body p {
@@ -114,41 +153,29 @@ body {
   font-size: 1.2rem;
 }
 
-.word-input {
-  display: block;
-  border-radius: 5px;
-  padding: 0.75rem;
-  border: 0;
-  margin: 0.5rem auto;
-  font-size: 1.2rem;
-}
-
-.word-input:focus {
-  outline: 0;
-}
-
-.btn {
-  display: block;
-  border: 0;
-  border-radius: 10px;
-  padding: 0.5rem 0.7rem;
+.game-btn {
   background-color: #28a745;
   color: #fff;
-  font-size: 1.3rem;
-  margin: 0.7rem auto;
-  transition: all 0.2s ease-in-out;
 }
 
-.btn:hover {
-  cursor: pointer;
-  opacity: 0.9;
+.rules-overlay,
+.scores-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
 }
 
-.btn:active {
-  transform: scale(0.95);
+.rules-overlay.show,
+.scores-overlay.show {
+  display: block;
 }
 
-.rules-box {
+.rules-card,
+.scores-card {
   position: absolute;
   width: 80vw;
   left: 10vw;
@@ -156,16 +183,19 @@ body {
   top: 20vh;
   background-color: #10151f;
   color: #fff;
-  display: none;
   border-radius: 10px;
   padding-top: 1rem;
 }
 
-.rules-box.show {
-  display: block;
+.scores-card {
+  width: 50vw;
+  left: 25vw;
+  height: 40vh;
+  top: 30vh;
 }
 
-.rules-head {
+.rules-head,
+.scores-head {
   text-align: center;
   font-size: 2rem;
   position: relative;
@@ -185,14 +215,84 @@ body {
   cursor: pointer;
 }
 
-.rules-body {
-  text-align: center;
-}
-
 .rules-body p {
+  text-align: center;
   margin-bottom: 0.5rem;
 }
 
 .rules-body p:nth-of-type(3) {
   text-decoration: underline;
+}
+
+.scores-body {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-left: 10vw;
+  width: 80%;
+  margin-top: 1rem;
+}
+
+.score-item {
+  margin-bottom: 0.6rem;
+}
+
+.score-item-head {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#close-scores {
+  right: 4vw;
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .game-card {
+    width: 60vw;
+  }
+
+  .scores-head h2 {
+    font-size: 1.5rem;
+  }
+
+  #close-scores {
+    top: 0;
+  }
+}
+
+/* Smartphones */
+@media (max-width: 500px) {
+  .game-card {
+    width: 80vw;
+  }
+
+  .rules-card {
+    height: 80vh;
+    top: 10vh;
+    width: 100vw;
+    left: 0;
+  }
+
+  .scores-card {
+    width: 80vw;
+    left: 10vw;
+  }
+
+  .navbar {
+    height: 12vh;
+  }
+
+  .difficulty {
+    display: block;
+  }
+
+  .difficulty select {
+    width: 100px;
+  }
+
+  .navbar-toggle {
+    top: 12vh;
+    width: 20vw;
+    left: 40vw;
+  }
 }
