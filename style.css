@@ -1,0 +1,338 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family:Arial, Helvetica, sans-serif;
+  
+}
+
+.btn {
+  display: block;
+  border: 0;
+  border-radius: 10px;
+  padding: 0.5rem 0.7rem;
+  font-size: 1.3rem;
+  margin: 0.7rem auto;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+  cursor:pointer;
+  opacity: 2;
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+input,
+select {
+  display: block;
+  border-radius: 6px;
+  padding: 0.75rem;
+  border: 0;
+  margin: 0.6rem auto;
+  font-size: 1.3rem;
+}
+
+input:focus,
+select:focus {
+  outline: 0;
+}
+
+select:hover {
+  cursor: pointer;
+}
+
+.navbar {
+  position: absolute;
+  top: 0;
+  background-color: blue;
+  margin: auto;
+  left: 0;
+  right: 0;
+  padding: 0.2rem 0;
+  color: #fff;
+  height: 10vh;
+  transform: translateY(-100%);
+  transition: all 0.2s ease-in-out;
+}
+
+.navbar.show {
+  transform: translateY(0);
+}
+
+.navbar-toggle {
+  position: absolute;
+  top: 10vh;
+  left: 47vw;
+  width: 6vw;
+  border-radius: 0 0 10px 10px;
+  cursor: pointer;
+  height: 2rem;
+  padding: 5px;
+  background-color: #1f2b38;
+  text-align: center;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70vw;
+  margin-left: 15vw;
+}
+
+.difficulty {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  
+}
+
+.difficulty p {
+  margin-right: 0.6rem;
+  font-size: 1.3rem;
+}
+
+.difficulty select {
+  background-color: whitesmoke;
+  width: 100px;
+  appearance: none;
+  padding: 0.3rem 1rem;
+  font-size: 1rem;
+  font-style:italic;
+}
+
+.Menu select{
+  background-color:whitesmoke;
+  font-style: normal;
+  font-size: 1rem;
+  align-items: flex-start;
+
+  
+
+}
+
+.Menu select {
+  background-color: whitesmoke;
+  width: 150px;
+  appearance: none;
+  padding: 0.3rem 1rem;
+  font-size: 1rem;
+  font-style:italic;
+}
+
+.nav-btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-left: 0.5rem;
+  display: inline;
+}
+
+.container {
+  display: flex;
+  
+  justify-content: space-evenly;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url("/letters.jpg");
+  height: 100vh;
+  background-size: cover;
+  box-shadow: red; 
+  padding-left: 3rem;
+  
+}
+
+.game-card {
+  
+  
+  display:flex;
+  padding: 0.6rem;
+  box-shadow: 0 0 10px 2px rgba(155, 28, 28, 0.5);
+  width: 37vw;
+  height: 70vh;
+  background-color: yellow;
+  color: rgb(197, 38, 38);
+  border-radius: 2rem;
+  border-style: solid;
+  border-width: 5px;
+  border-color: red;
+  /* border: red; */
+}
+
+.game-head {
+  background-color: orange;
+  text-align: center;
+ font-style:oblique;
+ font-size: 4rem;
+ 
+ 
+  padding: 5px 0;
+  margin: 0.7rem auto;
+  border-radius: 15px;
+}
+
+.game-head h1 {
+  font-size: 2.5rem;
+}
+
+.time-score {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0.5rem auto;
+}
+
+.game-body p {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.game-btn {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.rules-overlay,
+.scores-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+}
+
+.rules-overlay.show,
+.scores-overlay.show {
+  display: block;
+}
+
+.rules-card,
+.scores-card {
+  position: absolute;
+  width: 80vw;
+  left: 10vw;
+  height: 60vh;
+  top: 20vh;
+  background-color: #10151f;
+  color: #fff;
+  border-radius: 10px;
+  padding-top: 1rem;
+}
+
+.scores-card {
+  width: 50vw;
+  left: 25vw;
+  height: 40vh;
+  top: 30vh;
+}
+
+.rules-head,
+.scores-head {
+  text-align: center;
+  font-size: 2rem;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  right: 8vw;
+  top: 3vh;
+  background-color: transparent;
+  color: #fff;
+  border: 0;
+  font-size: 2rem;
+}
+
+.close-btn:hover {
+  cursor: pointer;
+}
+
+.rules-body p {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.rules-body p:nth-of-type(3) {
+  text-decoration: underline;
+}
+
+.scores-body {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-left: 10vw;
+  width: 80%;
+  margin-top: 1rem;
+}
+
+.score-item {
+  margin-bottom: 0.6rem;
+}
+
+.score-item-head {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#close-scores {
+  right: 4vw;
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .game-card {
+    width: 60vw;
+  }
+
+  .scores-head h2 {
+    font-size: 1.5rem;
+  }
+
+  #close-scores {
+    top: 0;
+  }
+}
+
+/* Smartphones */
+@media (max-width: 500px) {
+  .game-card {
+    width: 80vw;
+  }
+
+  .rules-card {
+    height: 80vh;
+    top: 10vh;
+    width: 100vw;
+    left: 0;
+  }
+
+  .scores-card {
+    width: 80vw;
+    left: 10vw;
+  }
+
+  .navbar {
+    height: 12vh;
+  }
+
+  .difficulty {
+    display: block;
+  }
+
+  .difficulty select {
+    width: 100px;
+  }
+
+  .navbar-toggle {
+    top: 12vh;
+    width: 20vw;
+    left: 40vw;
+  }
+}
