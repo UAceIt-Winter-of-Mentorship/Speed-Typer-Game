@@ -1,11 +1,20 @@
 const scoresBox = document.querySelector('.scores-overlay');
 const rulesBox = document.querySelector('.rules-overlay');
-const uiWord = document.querySelector('.word');
 const diffSelect = document.querySelector('select');
+const uiWord = document.querySelector('.word');
+const uiTime = document.querySelector('.time-left');
+const uiScore = document.querySelector('.score');
+const gameBtn = document.querySelector('.game-btn');
+const wordInput = document.querySelector('.word-input');
+const gameCard = document.querySelector('.game-card');
 
 let currentWord = '';
+let timeLeft = 10;
+let totalScore = 0;
 let randomWords = [];
+let timeInterval;
 
+// Fetch all words and put into an array
 async function getWords() {
   let numWords;
   if (diffSelect.value === 'easy') {
@@ -24,6 +33,7 @@ async function getWords() {
   getRandomWord();
 }
 
+// Get random word
 function getRandomWord() {
   const index = Math.floor(Math.random() * randomWords.length);
   if (index === randomWords.length) {
@@ -31,22 +41,95 @@ function getRandomWord() {
   }
 
   currentWord = randomWords[index];
-  populateUI(currentWord);
+  populateUI(currentWord, timeLeft, totalScore);
 }
 
-document.querySelector('.word-input').addEventListener('input', (e) => {
-  if (e.target.value === currentWord) {
-    getWord();
+// Update Difficulty
+function updateDifficulty() {
+  timeLeft = 10;
+  totalScore = 0;
+  getWords();
+}
+
+// Start game
+function startGame(e) {
+  if (e.target.textContent === 'Start Game') {
+    timeLeft = 10;
+    gameBtn.textContent = 'Restart Game';
+    gameBtn.style.backgroundColor = '#d9534f';
+    wordInput.value = '';
+    wordInput.disabled = false;
+
+    timeInterval = setInterval(timeDecrement, 1000);
+  } else {
+    window.location.reload();
   }
-});
-
-function populateUI(currentWord) {
-  uiWord.innerHTML = currentWord;
 }
 
-getWords();
-populateUI(currentWord);
+// decrement time each second
+function timeDecrement() {
+  timeLeft--;
+  if (timeLeft > 0) {
+    populateUI(currentWord, timeLeft, totalScore);
+  } else {
+    clearInterval(timeInterval);
+    changeState();
+  }
+}
 
+// Check for the enetred word with current word
+function checkWord() {
+  if (
+    wordInput.value.toLowerCase() === currentWord.toLowerCase() &&
+    wordInput.value !== ''
+  ) {
+    totalScore++;
+    updateTime();
+    getRandomWord();
+    wordInput.value = '';
+  }
+}
+
+// Update Time
+function updateTime() {
+  if (diffSelect.value === 'easy') {
+    timeLeft += 3;
+  } else if (diffSelect.value === 'medium') {
+    timeLeft += 2;
+  } else {
+    timeLeft++;
+  }
+}
+
+// Change state of card when time left is 0
+function changeState() {
+  gameCard.innerHTML = `
+    <h2>TIME RAN OUT!!!</h2>
+    <p class="game-over">Your total score is ${totalScore}
+    <br />
+    We hope you enjoyed our game</p>
+    <button class="btn play-again-btn">Play Again</button>
+  `;
+}
+
+// Play Again
+function playAgain(e) {
+  if (e.target.classList.contains('play-again-btn')) {
+    window.location.reload();
+  }
+}
+
+// Populate UI
+function populateUI(currentWord, timeLeft, totalScore) {
+  uiWord.innerText = currentWord;
+  uiTime.innerText = `Time Left: ${timeLeft}s`;
+  uiScore.innerText = `Score: ${totalScore}`;
+}
+
+// App
+getWords();
+
+// Event Listeners
 document.getElementById('scores-btn').addEventListener('click', () => {
   scoresBox.classList.add('show');
 });
@@ -66,3 +149,8 @@ document.querySelector('.navbar-toggle').addEventListener('click', () => {
     .querySelector('.navbar-toggle i')
     .classList.toggle('fa-chevron-down');
 });
+
+gameBtn.addEventListener('click', startGame);
+diffSelect.addEventListener('change', updateDifficulty);
+wordInput.addEventListener('input', checkWord);
+gameCard.addEventListener('click', playAgain);

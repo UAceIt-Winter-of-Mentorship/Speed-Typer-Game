@@ -157,9 +157,21 @@ select:hover {
   font-size: 2rem;
 }
 
-.game-btn {
+.game-btn,
+.play-again-btn {
   background-color: #28a745;
   color: #fff;
+}
+
+.game-card h2 {
+  text-align: center;
+  font-size: 3rem;
+  margin-top: 2rem;
+}
+
+.game-card p.game-over {
+  text-align: center;
+  font-size: 1.5rem;
 }
 
 .rules-overlay,
