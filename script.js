@@ -7,6 +7,7 @@ const uiScore = document.querySelector('.score');
 const gameBtn = document.querySelector('.game-btn');
 const wordInput = document.querySelector('.word-input');
 const gameCard = document.querySelector('.game-card');
+const scoresEl = document.querySelector('.scores-body');
 
 let currentWord = '';
 let timeLeft = 10;
@@ -74,6 +75,7 @@ function timeDecrement() {
   } else {
     clearInterval(timeInterval);
     changeState();
+    updateHighScores();
   }
 }
 
@@ -119,6 +121,67 @@ function playAgain(e) {
   }
 }
 
+// Get high scores from local storage
+function getHighScores() {
+  let highScores = {
+    easy: [0, null],
+    medium: [0, null],
+    hard: [0, null],
+  };
+
+  if (JSON.parse(localStorage.getItem('scores')) !== null) {
+    highScores = JSON.parse(localStorage.getItem('scores'));
+  }
+  return highScores;
+}
+
+// Update High Scores
+function updateHighScores() {
+  let highScores = getHighScores();
+
+  if (diffSelect.value === 'easy' && totalScore > highScores.easy[0]) {
+    highScores.easy[0] = totalScore;
+    highScores.easy[1] = moment().format('MMM Do YYYY');
+  } else if (
+    diffSelect.value === 'medium' &&
+    totalScore > highScores.medium[0]
+  ) {
+    highScores.medium[0] = totalScore;
+    highScores.medium[1] = moment().format('MMM Do YYYY');
+  } else if (diffSelect.value === 'hard' && totalScore > highScores.hard[0]) {
+    highScores.hard[0] = totalScore;
+    highScores.hard[1] = moment().format('MMM Do YYYY');
+  }
+
+  localStorage.setItem('scores', JSON.stringify(highScores));
+}
+
+// Populate High Scores in UI
+function populateHighScores() {
+  const highScores = getHighScores();
+
+  scoresEl.innerHTML = `
+    <div class="score-item score-item-head">Difficulty</div>
+    <div class="score-item score-item-head">Score</div>
+    <div class="score-item score-item-head">Date</div>
+    <div class="score-item">Easy</div>
+    <div class="score-item">${highScores.easy[0]}</div>
+    <div class="score-item">${
+      highScores.easy[1] === null ? 'N/A' : highScores.easy[1]
+    }</div>
+    <div class="score-item">Medium</div>
+    <div class="score-item">${highScores.medium[0]}</div>
+    <div class="score-item">${
+      highScores.medium[1] === null ? 'N/A' : highScores.medium[1]
+    }</div>
+    <div class="score-item">Hard</div>
+    <div class="score-item">${highScores.hard[0]}</div>
+    <div class="score-item">${
+      highScores.hard[1] === null ? 'N/A' : highScores.hard[1]
+    }</div>
+  `;
+}
+
 // Populate UI
 function populateUI(currentWord, timeLeft, totalScore) {
   uiWord.innerText = currentWord;
@@ -128,6 +191,7 @@ function populateUI(currentWord, timeLeft, totalScore) {
 
 // App
 getWords();
+populateHighScores();
 
 // Event Listeners
 document.getElementById('scores-btn').addEventListener('click', () => {

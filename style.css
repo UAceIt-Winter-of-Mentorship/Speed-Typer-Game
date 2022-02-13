@@ -267,6 +267,10 @@ select:hover {
     width: 60vw;
   }
 
+  .game-card h2 {
+    font-size: 1.5rem;
+  }
+
   .scores-head h2 {
     font-size: 1.5rem;
   }
