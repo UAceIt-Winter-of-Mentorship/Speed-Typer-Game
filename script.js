@@ -8,15 +8,11 @@ const uiTime = document.querySelector('.time-left');
 const gameBtn = document.querySelector('.game-btn');
 const scoresBox = document.querySelector('.scores-overlay');
 
-document.getElementById('rules-btn').addEventListener('click', () => {
-  rulesBox.classList.add('show');
-});
+
 document.getElementById('close-rules').addEventListener('click', () => {
   rulesBox.classList.remove('show');
 });
-document.getElementById('scores-btn').addEventListener('click', () => {
-  scoresBox.classList.add('show');
-});
+
 document.getElementById('close-scores').addEventListener('click', () => {
   scoresBox.classList.remove('show');
 });

@@ -5,8 +5,7 @@
 }
 
 body {
-  font-family:Arial, Helvetica, sans-serif;
-  
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .btn {
@@ -20,7 +19,7 @@ body {
 }
 
 .btn:hover {
-  cursor:pointer;
+  cursor: pointer;
   opacity: 2;
 }
 
@@ -90,8 +89,6 @@ select:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
-  
 }
 
 .difficulty p {
@@ -105,17 +102,14 @@ select:hover {
   appearance: none;
   padding: 0.3rem 1rem;
   font-size: 1rem;
-  font-style:italic;
+  font-style: italic;
 }
 
-.Menu select{
-  background-color:whitesmoke;
+.Menu select {
+  background-color: whitesmoke;
   font-style: normal;
   font-size: 1rem;
   align-items: flex-start;
-
-  
-
 }
 
 .Menu select {
@@ -124,7 +118,7 @@ select:hover {
   appearance: none;
   padding: 0.3rem 1rem;
   font-size: 1rem;
-  font-style:italic;
+  font-style: italic;
 }
 
 .nav-btn {
@@ -136,22 +130,19 @@ select:hover {
 
 .container {
   display: flex;
-  
+
   justify-content: space-evenly;
   align-items: center;
   min-height: 100vh;
-  background-image: url("/letters.jpg");
+  background-image: url("./letters.jpg");
   height: 100vh;
   background-size: cover;
-  box-shadow: red; 
+  box-shadow: red;
   padding-left: 3rem;
-  
 }
 
 .game-card {
-  
-  
-  display:flex;
+  display: flex;
   padding: 0.6rem;
   box-shadow: 0 0 10px 2px rgba(155, 28, 28, 0.5);
   width: 37vw;
@@ -168,10 +159,9 @@ select:hover {
 .game-head {
   background-color: orange;
   text-align: center;
- font-style:oblique;
- font-size: 4rem;
- 
- 
+  font-style: oblique;
+  font-size: 4rem;
+
   padding: 5px 0;
   margin: 0.7rem auto;
   border-radius: 15px;
